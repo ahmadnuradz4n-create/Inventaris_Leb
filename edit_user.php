@@ -80,12 +80,13 @@ $stmt_get->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Pengguna - Inventaris Lab Sains</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
 </head>
-<body class="bg-slate-100 flex min-h-screen">
+<body class="bg-slate-100 flex min-h-screen app-shell">
 
     <!-- Sidebar Admin -->
-    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between hidden md:flex">
+    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between hidden md:flex app-sidebar">
         <div>
             <div class="p-6 border-b border-slate-800">
                 <span class="text-xs uppercase tracking-wider text-indigo-400 font-semibold">Panel Admin</span>
@@ -105,13 +106,13 @@ $stmt_get->close();
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col">
-        <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center">
+    <div class="flex-1 flex flex-col app-content">
+        <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center app-header">
             <h2 class="text-lg font-semibold text-slate-800">Edit Akun Pengguna</h2>
             <div class="text-sm text-slate-500">Role: <span class="font-semibold text-indigo-600 uppercase">Admin</span></div>
         </header>
 
-        <main class="p-8 flex-1 space-y-6 max-w-4xl">
+        <main class="p-8 flex-1 space-y-6 max-w-4xl app-main">
             <!-- Tombol Kembali -->
             <div>
                 <a href="pengguna.php" class="inline-flex items-center gap-2 text-sm text-indigo-600 hover:text-indigo-800 font-medium">

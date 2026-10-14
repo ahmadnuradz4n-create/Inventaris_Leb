@@ -54,12 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Inventaris Lab Sains</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
 </head>
 <body class="bg-slate-50 flex items-center justify-center min-h-screen">
 
-    <div class="w-full max-w-md bg-white rounded-xl shadow-lg border border-slate-100 p-8 mx-4">
+    <div class="w-full max-w-md bg-white rounded-xl shadow-lg border border-slate-100 p-8 mx-4 login-card">
         <!-- Logo / Header -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-14 h-14 bg-indigo-50 text-indigo-600 rounded-full mb-3 text-2xl font-bold">

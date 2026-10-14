@@ -26,12 +26,13 @@ $riwayat = $conn->query($query_riwayat);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Peminjam - Inventaris Lab Sains</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
 </head>
-<body class="bg-slate-100 flex min-h-screen">
+<body class="bg-slate-100 flex min-h-screen app-shell">
 
     <!-- Sidebar Peminjam -->
-    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between hidden md:flex">
+    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between hidden md:flex app-sidebar">
         <div>
             <div class="p-6 border-b border-slate-800">
                 <span class="text-xs uppercase tracking-wider text-emerald-400 font-semibold">Portal Peminjam</span>
@@ -39,7 +40,7 @@ $riwayat = $conn->query($query_riwayat);
             </div>
             <nav class="p-4 space-y-1">
                 <a href="dashboard_peminjam.php" class="flex items-center gap-3 px-4 py-2.5 bg-emerald-600 text-white rounded-lg font-medium text-sm">🧪 Riwayat Saya</a>
-                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-800 rounded-lg text-sm transition">🔬 Katalog Barang Lab</a>
+                <a href="catalog_barang.php" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-800 rounded-lg text-sm">🔬 Katalog Barang Lab</a>
             </nav>
         </div>
         <div class="p-4 border-t border-slate-800">
@@ -48,15 +49,15 @@ $riwayat = $conn->query($query_riwayat);
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col">
+    <div class="flex-1 flex flex-col app-content">
         <!-- Top Navbar -->
-        <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center">
+        <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center app-header">
             <h2 class="text-lg font-semibold text-slate-800">Halo, <?php echo htmlspecialchars($_SESSION['name']); ?> 👋</h2>
             <div class="text-sm text-slate-500">Role: <span class="font-semibold text-emerald-600 uppercase">Peminjam</span></div>
         </header>
 
         <!-- Dashboard Body -->
-        <main class="p-8 flex-1 space-y-6">
+        <main class="p-8 flex-1 space-y-6 app-main">
             <!-- Informasi Singkat -->
             <div class="bg-emerald-50 border border-emerald-200 p-6 rounded-xl flex items-center justify-between">
                 <div>
@@ -71,7 +72,7 @@ $riwayat = $conn->query($query_riwayat);
                     <h3 class="font-bold text-slate-800">Riwayat Peminjaman Barang Anda</h3>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm text-slate-600">
+                    <table class="table table-hover align-middle w-full text-left text-sm text-slate-600">
                         <thead class="bg-slate-50 text-slate-700 uppercase text-xs">
                             <tr>
                                 <th class="px-6 py-3">Nama Barang</th>

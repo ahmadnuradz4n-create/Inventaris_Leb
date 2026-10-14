@@ -128,12 +128,13 @@ $users_list = $conn->query("SELECT id, name, email, role, status, created_at FRO
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manajemen Pengguna - Inventaris Lab Sains</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
 </head>
-<body class="bg-slate-100 flex min-h-screen">
+<body class="bg-slate-100 flex min-h-screen app-shell">
 
     <!-- Sidebar Admin -->
-    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between hidden md:flex">
+    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between hidden md:flex app-sidebar">
         <div>
             <div class="p-6 border-b border-slate-800">
                 <span class="text-xs uppercase tracking-wider text-indigo-400 font-semibold">Panel Admin</span>
@@ -154,13 +155,13 @@ $users_list = $conn->query("SELECT id, name, email, role, status, created_at FRO
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col">
-        <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center">
+    <div class="flex-1 flex flex-col app-content">
+        <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center app-header">
             <h2 class="text-lg font-semibold text-slate-800">Manajemen Akun Pengguna Sistem</h2>
             <div class="text-sm text-slate-500">Role: <span class="font-semibold text-indigo-600 uppercase">Admin</span></div>
         </header>
 
-        <main class="p-8 flex-1 space-y-6">
+        <main class="p-8 flex-1 space-y-6 app-main">
             <?php if (!empty($success)): ?>
                 <div class="p-4 bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm rounded-lg flex items-center gap-2">
                     <span>✅</span><span><?php echo $success; ?></span>
@@ -262,7 +263,7 @@ $users_list = $conn->query("SELECT id, name, email, role, status, created_at FRO
                     <h3 class="font-bold text-slate-800">Daftar Akun yang Terdaftar di Database</h3>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm text-slate-600">
+                    <table class="table table-hover align-middle w-full text-left text-sm text-slate-600">
                         <thead class="bg-slate-50 text-slate-700 uppercase text-xs">
                             <tr>
                                 <th class="px-4 py-3">ID</th>

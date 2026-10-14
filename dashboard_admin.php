@@ -9,13 +9,13 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 }
 
 // Ambil data statistik untuk Dashboard (Fitur 2)
-$q_tersedia = $conn->query("SELECT SUM(available_quantity) as total FROM items")->fetch_assoc()['total'] ?? 0;
+$q_tersedia = $conn->query("SELECT SUM(available_quantity) as total FROM items WHERE deleted_at IS NULL")->fetch_assoc()['total'] ?? 0;
 $q_dipinjam = $conn->query("SELECT COUNT(*) as total FROM borrowings WHERE status = 'dipinjam'")->fetch_assoc()['total'] ?? 0;
 $q_terlambat = $conn->query("SELECT COUNT(*) as total FROM borrowings WHERE status = 'terlambat'")->fetch_assoc()['total'] ?? 0;
 $q_hilang = $conn->query("SELECT COUNT(*) as total FROM borrowing_details WHERE status_item = 'hilang'")->fetch_assoc()['total'] ?? 0;
 
 // Ambil data barang terbaru
-$items = $conn->query("SELECT items.*, categories.name as category_name FROM items JOIN categories ON items.category_id = categories.id ORDER BY items.id DESC LIMIT 5");
+$items = $conn->query("SELECT items.*, categories.name as category_name FROM items JOIN categories ON items.category_id = categories.id WHERE items.deleted_at IS NULL ORDER BY items.id DESC LIMIT 5");
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -23,12 +23,13 @@ $items = $conn->query("SELECT items.*, categories.name as category_name FROM ite
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Inventaris Lab Sains</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
 </head>
-<body class="bg-slate-100 flex min-h-screen">
+<body class="bg-slate-100 flex min-h-screen app-shell">
 
     <!-- Sidebar Admin -->
-    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between hidden md:flex">
+    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between hidden md:flex app-sidebar">
         <div>
             <div class="p-6 border-b border-slate-800">
                 <span class="text-xs uppercase tracking-wider text-indigo-400 font-semibold">Panel Admin</span>
@@ -49,15 +50,15 @@ $items = $conn->query("SELECT items.*, categories.name as category_name FROM ite
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col">
+    <div class="flex-1 flex flex-col app-content">
         <!-- Top Navbar -->
-        <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center">
+        <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center app-header">
             <h2 class="text-lg font-semibold text-slate-800">Selamat Datang, <?php echo htmlspecialchars($_SESSION['name']); ?> 👑</h2>
             <div class="text-sm text-slate-500">Role: <span class="font-semibold text-indigo-600 uppercase">Admin</span></div>
         </header>
 
         <!-- Dashboard Body -->
-        <main class="p-8 flex-1 space-y-6">
+        <main class="p-8 flex-1 space-y-6 app-main">
             <!-- Fitur 2: Grid Kartu Statistik Dashboard -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
@@ -85,7 +86,7 @@ $items = $conn->query("SELECT items.*, categories.name as category_name FROM ite
                     <a href="#" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800">Lihat Semua →</a>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm text-slate-600">
+                    <table class="table table-hover align-middle w-full text-left text-sm text-slate-600">
                         <thead class="bg-slate-50 text-slate-700 uppercase text-xs">
                             <tr>
                                 <th class="px-6 py-3">Kode</th>

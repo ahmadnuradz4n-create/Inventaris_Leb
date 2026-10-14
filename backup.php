@@ -232,10 +232,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Backup &amp; Restore - Inventaris Lab Sains</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
 </head>
-<body class="bg-slate-100 flex min-h-screen">
-    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between hidden md:flex">
+<body class="bg-slate-100 flex min-h-screen app-shell">
+    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between hidden md:flex app-sidebar">
         <div>
             <div class="p-6 border-b border-slate-800">
                 <span class="text-xs uppercase tracking-wider text-indigo-400 font-semibold">Panel Admin</span>
@@ -255,13 +256,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </aside>
 
-    <div class="flex-1 flex flex-col min-w-0">
-        <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center">
+    <div class="flex-1 flex flex-col min-w-0 app-content">
+        <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center app-header">
             <h2 class="text-lg font-semibold text-slate-800">Backup &amp; Restore Database</h2>
             <div class="text-sm text-slate-500">Role: <span class="font-semibold text-indigo-600 uppercase">Admin</span></div>
         </header>
 
-        <main class="p-4 md:p-8 flex-1 space-y-6 max-w-5xl w-full mx-auto">
+        <main class="p-4 md:p-8 flex-1 space-y-6 max-w-5xl w-full mx-auto app-main">
             <?php if ($success !== ''): ?>
                 <div class="p-4 bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm rounded-lg">✅ <?php echo htmlspecialchars($success, ENT_QUOTES, 'UTF-8'); ?></div>
             <?php endif; ?>
